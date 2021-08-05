@@ -1,4 +1,3 @@
-
-[submodule "dscore"]
+[submodule "sd/dscore"]
 	path = sd/dscore
-	url = https://github.com/nryant/dscore
+	url = https://github.com/nryant/dscore.git
