@@ -1,9 +1,4 @@
-# Magic-Data-ASR-SD-Challenge
-
-
-
-
-[VBx](https://github.com/BUTSpeechFIT/VBx)
+# Magic Data ASR-SD Challenge
 
 ***
 ## ASR Track
