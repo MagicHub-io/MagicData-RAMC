@@ -1,0 +1,4 @@
+
+[submodule "dscore"]
+	path = sd/dscore
+	url = https://github.com/nryant/dscore
