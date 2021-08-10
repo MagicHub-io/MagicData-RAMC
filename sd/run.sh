@@ -24,14 +24,17 @@ mkdir -p $dia_emb_dir || exit 1;
 mkdir -p $dia_split_rttm_dir || exit 1;
 mkdir -p $dia_stable_rttm_dir || exit 1;
 
-stage=4
+stage=1
 nj=8
 
 if [ $stage -le 1 ]; then
     # Prepare the magicdata data
     echo "Prepare Magicdata data"
     scripts/make_magicdata_test.sh $magicdata_test_path $work_dir
-    scripts/choose_first_channel.sh $magicdata_test_path $work_dir
+    
+    cp $work_dir/init_wav.scp $work_dir/wav.scp
+    awk '{print $1" "$1}' $work_dir/wav.scp > $work_dir/utt2spk
+    awk '{print $1" "$1}' $work_dir/wav.scp > $work_dir/spk2utt
 
     sad_feat=$sad_dir/feat/mfcc
     cp $work_dir/wav.scp $sad_dir
@@ -42,7 +45,6 @@ if [ $stage -le 1 ]; then
     # extract feature
     scripts/extract_feature.sh $sad_dir $sad_feat $nj
 fi
-
 
 if [ $stage -le 2 ]; then
     # Do Speech Activity Detectation
