@@ -50,7 +50,8 @@ Run prepare_magicdata_160h.py under scripys folder.
 ### Testing & Scoring:
 
 ```bash
-./run.sh
+./run_extract_embedding.sh
+./run_clustering.sh
 ```
 
 For scoring, [DIHARD Socring Tools](https://github.com/nryant/dscore) could be used to calculate DER, JER and so on. We already add this repo as a git submodule under our project.
@@ -108,6 +109,12 @@ python score.py --collar 0.25 -r ${groundtruth_rttm} -s ${predicted_rttm}
 [5] Landini, F., Wang, S., Diez, M., Burget, L., Matějka, P., Žmolíková, K., Mošner, L., Silnova, A., Plchot, O., Novotný, O. and Zeinali, H., 2020, May. But system for the second dihard speech diarization challenge. In ICASSP 2020-2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (pp. 6529-6533). IEEE.
 
 [6] Diez, M., Burget, L., Landini, F. and Černocký, J., 2019. Analysis of speaker diarization based on Bayesian HMM with eigenvoice priors. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 28, pp.355-368.
+
+[7] Ryant, N., Church, K., Cieri, C., Du, J., Ganapathy, S. and Liberman, M., 2020. Third DIHARD challenge evaluation plan. arXiv preprint arXiv:2006.05815.
+
+[8] Watanabe, S., Mandel, M., Barker, J., Vincent, E., Arora, A., Chang, X., Khudanpur, S., Manohar, V., Povey, D., Raj, D. and Snyder, D., 2020. CHiME-6 challenge: Tackling multispeaker speech recognition for unsegmented recordings. arXiv preprint arXiv:2004.09249.
+
+[9] Fu, Y., Cheng, L., Lv, S., Jv, Y., Kong, Y., Chen, Z., Hu, Y., Xie, L., Wu, J., Bu, H. and Xu, X., 2021. AISHELL-4: An Open Source Dataset for Speech Enhancement, Separation, Recognition and Speaker Diarization in Conference Scenario. arXiv preprint arXiv:2104.03603.
 
 <!-- More details about the Conformer: 
 
