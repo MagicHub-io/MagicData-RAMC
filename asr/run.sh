@@ -49,6 +49,8 @@ use_valbest_average=false     # if true, the validation `n_average`-best ASR mod
 datadir=/home/chenyifan/dataset_3/data
 
 
+
+
 # exp tag
 tag="" # tag for managing experiments.
 
