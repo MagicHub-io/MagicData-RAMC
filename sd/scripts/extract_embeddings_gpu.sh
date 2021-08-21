@@ -20,6 +20,7 @@ do
                           --in-wav-dir $wav_path \
                           --out-ark-fn $work_path/embedding/${audio}.ark \
                           --out-seg-fn $work_path/embedding/${audio}.seg \
+                          --model ResNet101 \
                           --weights VBx/models/ResNet101_16kHz/nnet/raw_81.pth \
                           --backend pytorch &
     echo "${filename} finished"
