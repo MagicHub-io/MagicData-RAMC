@@ -16,7 +16,7 @@
 
 (1) DATA: Only provided 160h dialog dataset, [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/), [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/) and [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/) are allowed. Data augmentation could be used to process the training sets, and only public noise datasets (such as [MUSAN (openslr-17)](https://openslr.org/17/), [RIRNoise (openslr-28)](https://openslr.org/28/)) are allowed. Pre-train model using other datasets (including unlabeled data) are not allowed in this challenge.
 
-(2) MODEL: There are no limit on method in the challenge. Such as model combination, pre-training and finetune, unsupervised adaptation are all allowed. Note that all methods should follow the rule (1).
+(2) METHOD: There are no limit on method in the challenge. Such as model combination, pre-training and finetune, unsupervised adaptation are all allowed. Note that all methods should follow the rule (1).
 
 (3) TESTING: The testing data is homologous to the 160h dialog dataset. And timestamps of testing data will be provided on ASR track. Nonlinguistic symbols such as [*] will not appear in testing set.
 
