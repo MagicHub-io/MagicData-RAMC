@@ -1,6 +1,28 @@
 # Magic Data ASR-SD Challenge
 
 ***
+## 规则说明：
+
+(1) 数据：训练数据只允许使用提供的 160h 对话数据集，以及 [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/), [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/), [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/)。允许使用公开的噪声数据集 (如 [MUSAN (openslr-17)](https://openslr.org/17/), [RIRNoise (openslr-28)](https://openslr.org/28/)) 进行数据增广，但需要注明来源。禁止使用其他来源的数据(包括无监督数据)训练出的预训练模型。
+
+(2) 方法：方法不限，允许包括模型融合，预训练-finetune，无监督自适应在内的所有方法，但需要符合 (1) 中的数据使用规范。
+
+(3) 测试：测试数据与 160h 对话数据同源。ASR 赛道的测试集会给出时间点标注信息。测试集中不会出现训练集中存在的 [*] 等非语言符。 
+
+(4) 打分：ASR 赛道标点符号，非语言符不参与最终 WER 计算。
+
+***
+## RULES EXPLANATION:
+
+(1) DATA: Only provided 160h dialog dataset, [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/), [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/) and [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/) are allowed. Data augmentation could be used to process the training sets, and only public noise datasets (such as [MUSAN (openslr-17)](https://openslr.org/17/), [RIRNoise (openslr-28)](https://openslr.org/28/)) are allowed. Pre-train model using other datasets (including unlabeled data) are not allowed in this challenge.
+
+(2) MODEL: There are no limit on method in the challenge. Such as model combination, pre-training and finetune, unsupervised adaptation are all allowed. Note that all methods should follow the rule (1).
+
+(3) TESTING: The testing data is homologous to the 160h dialog dataset. And timestamps of testing data will be provided on ASR track. Nonlinguistic symbols such as [*] will not appear in testing set.
+
+(4) SCORING: On ASR track, punctuation marks and nonlinguistic symbols will not involve in WER calculation.
+
+***
 ## ASR Track
 
 <!-- [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/)  -->
