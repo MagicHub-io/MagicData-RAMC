@@ -19,7 +19,7 @@ do
                 --lda-dim 128 \
                 --Fa 0.3 \
                 --Fb 17 \
-                --loopP 0.99 &
+                --loopP 0.99
     echo "$filename mission added"
 done
 

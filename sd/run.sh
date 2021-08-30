@@ -73,3 +73,10 @@ if [ $stage -le 3 ]; then
     # Note that the scripts will sub all the job, so please keep the `exit 1`
     scripts/extract_embeddings.sh $dia_dir $magicdata_test_path
 fi
+
+if [ $stage -le 4 ]; then
+    # The Speaker Embedding Cluster
+    echo "Do the Speaker Embedding Cluster"
+    # The meeting data is long so that the cluster is a little bit slow
+    scripts/run_cluster.sh $dia_dir
+fi

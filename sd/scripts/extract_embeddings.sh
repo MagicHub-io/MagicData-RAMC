@@ -20,7 +20,7 @@ do
                           --out-ark-fn $work_path/embedding/${audio}.ark \
                           --out-seg-fn $work_path/embedding/${audio}.seg \
                           --weights VBx/models/ResNet101_16kHz/nnet/final.onnx \
-                          --backend onnx &
+                          --backend onnx
     echo "${filename} finished"
 done
 echo "extract embedding finished!"

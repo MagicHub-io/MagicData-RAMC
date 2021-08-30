@@ -72,8 +72,7 @@ Run prepare_magicdata_160h.py under scripys folder.
 ### Testing & Scoring:
 
 ```bash
-./run_extract_embedding.sh
-./run_clustering.sh
+./run.sh
 ```
 
 For scoring, [DIHARD Socring Tools](https://github.com/nryant/dscore) could be used to calculate DER, JER and so on. We already add this repo as a git submodule under our project.

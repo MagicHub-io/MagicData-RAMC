@@ -125,7 +125,9 @@ if __name__ == '__main__':
             model.load_state_dict(checkpoint['state_dict'], strict=False)
             model.eval()
     elif args.backend == 'onnx':
-        model = onnxruntime.InferenceSession(args.weights)
+        sess_options = onnxruntime.SessionOptions()
+        sess_options.intra_op_num_threads = 1
+        model = onnxruntime.InferenceSession(args.weights, sess_options)
         input_name = model.get_inputs()[0].name
         label_name = model.get_outputs()[0].name
 
