@@ -1,29 +1,71 @@
-# Magic Data ASR-SD Challenge
+# MagicData-RAMC Dataset and Baseline
+
+- [Contents](#contents)
+    - [Description](#description)
+    - [Usage](#usage)
+    - [Speaker Diarization Task](#speaker-diarization-task)
+    - [ASR Task](#asr-task)
+    - [Reference Resource](#reference-resource)
+    - [Citation](#citation)
+    - [Contact](#contact)
+    - [Acknowledgment](#acknowledgment)
+    - [Reference](#reference)
+    
 
 ***
-## 规则说明：
+## [Description](#content)
 
-(1) 数据：训练数据只允许使用提供的 160h 对话数据集，以及 [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/), [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/), [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/)。允许使用公开的噪声数据集 (如 [MUSAN (openslr-17)](https://openslr.org/17/), [RIRNoise (openslr-28)](https://openslr.org/28/)) 进行数据增广，但需要注明来源。禁止使用其他来源的数据(包括无监督数据)训练出的预训练模型。
-
-(2) 方法：方法不限，允许包括模型融合，预训练-finetune，无监督自适应在内的所有方法，但需要符合 (1) 中的数据使用规范。
-
-(3) 测试：测试数据与 160h 对话数据同源。ASR 赛道的测试集会给出时间点标注信息。测试集中不会出现训练集中存在的 [*] 等非语言符。 
-
-(4) 打分：ASR 赛道标点符号，非语言符不参与最终 WER 计算。
+The MagicData-RAMC corpus contains 180 hours of conversational speech data recorded from native speakers of Mandarin Chinese over mobile phones with a sampling rate of 16 kHz. The dialogs in MagicData-RAMC are classified into 15 diversified domains and tagged with topic labels, ranging from science and technology to ordinary life. Accurate transcription and precise speaker voice activity timestamps are manually labeled for each sample. Speakers' detailed information is also provided. As a Mandarin speech dataset designed for dialog scenarios with high quality and rich annotations, MagicData-RAMC enriches the data diversity in the Mandarin speech community and allows extensive research on a series of speech-related tasks, including automatic speech recognition, speaker diarization, topic detection, keyword search, text-to-speech, etc. We also conduct several relevant tasks and provide experimental results to help evaluate the dataset.
 
 ***
-## RULES EXPLANATION:
+## [Download](#content)
 
-(1) DATA: Only provided 160h dialog dataset, [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/), [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/) and [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/) are allowed. Data augmentation could be used to process the training sets, and only public noise datasets (such as [MUSAN (openslr-17)](https://openslr.org/17/), [RIRNoise (openslr-28)](https://openslr.org/28/)) are allowed. Pre-train model using other datasets (including unlabeled data) are not allowed in this challenge.
-
-(2) METHOD: There are no limit on method in the challenge. Such as model combination, pre-training and finetune, unsupervised adaptation are all allowed. Note that all methods should follow the rule (1).
-
-(3) TESTING: The testing data is homologous to the 160h dialog dataset. And timestamps of testing data will be provided on ASR track. Nonlinguistic symbols such as [*] will not appear in testing set.
-
-(4) SCORING: On ASR track, punctuation marks and nonlinguistic symbols will not involve in WER calculation.
+The dataset can be downloaded on [openslr](http://www.openslr.org/123/).
 
 ***
-## ASR Track
+## [Speaker Diarization Task](#content)
+
+For speaker diarization track, we use [VBHMM x-vectors (aka VBx)](https://github.com/BUTSpeechFIT/VBx) trained by [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/) and [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/) on this task. X-vectors embeddings are extracted by [ResNet](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf), and besides, agglomerative hierarchical clustering with variational Bayes HMM resegmentation are conducted to get final result.
+
+***
+### Data Preparation:
+
+Run prepare_magicdata_160h.py under scripys folder.
+
+***
+### Testing & Scoring:
+
+```bash
+./run.sh
+```
+
+For scoring, [DIHARD Socring Tools](https://github.com/nryant/dscore) could be used to calculate DER, JER and so on. We already add this repo as a git submodule under our project.
+
+```bash
+git submodule update --init --recursive
+cd sd/dscore
+python score.py --collar 0.25 -r ${groundtruth_rttm} -s ${predicted_rttm}
+```
+
+We formulate CDER (Conversational Diarization Error Rate) to evaluate the performance of the speaker diarization system on the sentence level under conversational scenario. Our [CDER-Metric](https://github.com/MagicHub-io/CDER_Metric) could be used to calculate CDER.
+
+```bash
+cd sd/CDER-Metric
+python score.py -r ${groundtruth_rttm} -s ${predicted_rttm}
+```
+
+***
+### Result:
+
+
+| Method    | DER (collar 0.25) | DER (collar 0) | JER   |  CDER |
+| --------- | ----- | ----- | ----- | ----- |
+| [VBx](https://github.com/BUTSpeechFIT/VBx) | 5.57 | 17.48 | 45.73 | 26.9 |
+
+
+
+***
+## [ASR Task](#content)
 
 <!-- [MAGICDATA Mandarin Chinese Read Speech Corpus (openslr-68)](http://www.openslr.org/68/)  -->
 
@@ -58,42 +100,9 @@ sclite -r ${ref_path} trn -h ${output_path} trn -i rm -o all stdout > ${result_p
 | [Conformer](https://github.com/espnet/espnet/tree/master/egs2/librispeech/asr1) | 80.1  | 13.7  | 6.3   | 2.8   | 22.8  |
 
 
-***
-## SD Track
-
-For speaker diarization track, we use [VBHMM x-vectors (aka VBx)](https://github.com/BUTSpeechFIT/VBx) trained by [VoxCeleb Data (openslr-49)](http://www.openslr.org/49/) and [CN-Celeb Corpus (openslr-82)](http://www.openslr.org/82/) on this task. X-vectors embeddings are extracted by [ResNet](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf), and besides, agglomerative hierarchical clustering with variational Bayes HMM resegmentation are conducted to get final result.
 
 ***
-### Data Preparation:
-
-Run prepare_magicdata_160h.py under scripys folder.
-
-***
-### Testing & Scoring:
-
-```bash
-./run.sh
-```
-
-For scoring, [DIHARD Socring Tools](https://github.com/nryant/dscore) could be used to calculate DER, JER and so on. We already add this repo as a git submodule under our project.
-
-```bash
-git submodule update --init --recursive
-cd sd/dscore
-python score.py --collar 0.25 -r ${groundtruth_rttm} -s ${predicted_rttm}
-```
-
-***
-### Result:
-
-
-| Method    | DER   | JER   |
-| --------- | ----- | ----- |
-| [VBx](https://github.com/BUTSpeechFIT/VBx) | 7.89  | 47.47 |
-
-
-***
-## Reference Resource
+## [Reference Resource](#content)
 
 ### Open Source project:
 
@@ -117,7 +126,30 @@ python score.py --collar 0.25 -r ${groundtruth_rttm} -s ${predicted_rttm}
 
 
 ***
-## Reference Paper
+## [Citation](#contents)
+
+If you use MagicData-RAMC dataset in your research, please kindly consider citing our paper:
+
+    @article{yang2022open,
+    title={Open Source MagicData-RAMC: A Rich Annotated Mandarin Conversational (RAMC) Speech Dataset},
+    author={Yang, Zehui and Chen, Yifan and Luo, Lei and Yang, Runyan and Ye, Lingxuan and Cheng, Gaofeng and Xu, Ji and Jin, Yaohui and Zhang, Qingqing and Zhang, Pengyuan and others},
+    journal={arXiv preprint arXiv:2203.16844},
+    year={2022}
+    }
+
+***
+## [Contact](#contents)
+
+If you have any questions, please contact us. You could open an issue on github or email us. 
+
+
+***
+## [Acknowledgment](#contents)
+
+We thank [@MG623](https://github.com/MG623) for finding label mistakes in CTS-CN-F2F-2019-11-15-1422 ([detail](https://github.com/MagicHub-io/MagicData-RAMC-Challenge/issues/8)). 
+
+***
+## [Reference](#contents)
 
 [1] Watanabe, S., Hori, T., Karita, S., Hayashi, T., Nishitoba, J., Unno, Y., Soplin, N.E.Y., Heymann, J., Wiesner, M., Chen, N. and Renduchintala, A., 2018. Espnet: End-to-end speech processing toolkit. arXiv preprint arXiv:1804.00015.
 
@@ -137,11 +169,3 @@ python score.py --collar 0.25 -r ${groundtruth_rttm} -s ${predicted_rttm}
 
 [9] Fu, Y., Cheng, L., Lv, S., Jv, Y., Kong, Y., Chen, Z., Hu, Y., Xie, L., Wu, J., Bu, H. and Xu, X., 2021. AISHELL-4: An Open Source Dataset for Speech Enhancement, Separation, Recognition and Speaker Diarization in Conference Scenario. arXiv preprint arXiv:2104.03603.
 
-<!-- More details about the Conformer: 
-
-https://arxiv.org/pdf/2005.08100
-
-
-https://ieeexplore.ieee.org/abstract/document/8910412/
-
-https://arxiv.org/pdf/2002.11356 -->
