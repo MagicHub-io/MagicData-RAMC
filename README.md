@@ -140,7 +140,7 @@ If you use MagicData-RAMC dataset in your research, please kindly consider citin
 ***
 ## [Contact](#contents)
 
-If you have any questions, please contact us. You could open an issue on github or email us. 
+If you have any questions, please contact us. You could open an issue on github or [email us](open@magicdatatech.com]). 
 
 
 ***
