@@ -63,8 +63,7 @@ python score.py -r ${groundtruth_rttm} -s ${predicted_rttm}
 | [VBx](https://github.com/BUTSpeechFIT/VBx) | MagicData-RAMC Dev | 5.57 | 17.48 | 45.73 | 26.9 |
 | [VBx](https://github.com/BUTSpeechFIT/VBx) | MagicData-RAMC Test | 7.96 | 19.90 | 47.49 | 28.2 |
 
-We will provide CSSD-Test set on Sep, 8, 2022. 
-
+Note that we will provide CSSD-Test set on Sep, 8, 2022. All participates should submit results on CSSD-Test set before Sep, 10, 2022. And we will score and rank according to submitted results. All papers could use MagicData-RAMC Dev and MagicData-RAMC Test to evaluate proposed methods.
 ***
 ## [ASR Task](#content)
 
