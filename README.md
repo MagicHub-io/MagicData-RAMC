@@ -58,11 +58,12 @@ python score.py -r ${groundtruth_rttm} -s ${predicted_rttm}
 ### Result:
 
 
-| Method    | DER (collar 0.25) | DER (collar 0) | JER   |  CDER |
-| --------- | ----- | ----- | ----- | ----- |
-| [VBx](https://github.com/BUTSpeechFIT/VBx) | 5.57 | 17.48 | 45.73 | 26.9 |
+| Method    | Subset | DER (collar 0.25) | DER (collar 0) | JER   |  CDER |
+| --------- | ----- | ----- | ----- | ----- | ----- |
+| [VBx](https://github.com/BUTSpeechFIT/VBx) | MagicData-RAMC Dev | 5.57 | 17.48 | 45.73 | 26.9 |
+| [VBx](https://github.com/BUTSpeechFIT/VBx) | MagicData-RAMC Test | 7.96 | 19.90 | 47.49 | 28.2 |
 
-
+We will provide CSSD-Test set on Sep, 8, 2022. 
 
 ***
 ## [ASR Task](#content)
@@ -95,10 +96,10 @@ sclite -r ${ref_path} trn -h ${output_path} trn -i rm -o all stdout > ${result_p
 ***
 ### Result:
 
-| Method    | Corr  | Sub   | Del   | Ins   | Err   |
-| --------- | ----- | ----- | ----- | ----- | ----- |
-| [Conformer](https://github.com/espnet/espnet/tree/master/egs2/librispeech/asr1) | 80.1  | 13.7  | 6.3   | 2.8   | 22.8  |
-
+| Method    | Subset   | Err   |
+| --------- | ----- |  ----- |
+| [Conformer](https://github.com/espnet/espnet/tree/master/egs2/librispeech/asr1) | MagicData-RAMC Dev |  16.5  |
+| [Conformer](https://github.com/espnet/espnet/tree/master/egs2/librispeech/asr1) | MagicData-RAMC Test |  19.1  |
 
 
 ***
