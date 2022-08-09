@@ -1,11 +1,9 @@
 [submodule "sd/dscore"]
 	path = sd/dscore
 	url = https://github.com/nryant/dscore.git
-
 [submodule "sd/vbx-training"]
 	path = sd/vbx-training
-	url = https://github.com/CYFFF/VBx-training-dist
-
-[submodule "sd/CDER-Metric"]
-	path = sd/CDER-Metric
-	url = https://github.com/SpeechClub/CDER_Metric
+	url = https://github.com/CYFFF/VBx-training-dist.git
+[submodule "sd/CDER_Metric"]
+	path = sd/CDER_Metric
+	url = https://github.com/SpeechClub/CDER_Metric.git
