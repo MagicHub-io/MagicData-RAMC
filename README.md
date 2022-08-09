@@ -146,7 +146,7 @@ If you have any questions, please contact us. You could open an issue on github 
 ***
 ## [Acknowledgment](#contents)
 
-We thank [@MG623](https://github.com/MG623) for finding label mistakes in CTS-CN-F2F-2019-11-15-1422 ([detail](https://github.com/MagicHub-io/MagicData-RAMC-Challenge/issues/8)). 
+We thank [@MG623](https://github.com/MG623) for finding label mistakes in CTS-CN-F2F-2019-11-15-1422 ([detail](https://github.com/MagicHub-io/MagicData-RAMC-Challenge/issues/8)). We thank [@kli017](https://github.com/kli017) for pointing out the problem in data prepare stage([detail](https://github.com/MagicHub-io/MagicData-RAMC/issues/11)). 
 
 ***
 ## [Reference](#contents)
